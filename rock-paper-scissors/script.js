@@ -1,26 +1,13 @@
+// Score and Outcomes Initialization
+const outcomes = {
+    'rock': { 'rock': 'tie', 'paper': 'lose', 'scissors': 'win' },
+    'paper': { 'rock': 'win', 'paper': 'tie', 'scissors': 'lose' },
+    'scissors': { 'rock': 'lose', 'paper': 'win', 'scissors': 'tie' }
+};
 
-let outcomes = {
-    'rock': {
-        'rock':'tie',
-        'paper':'lose',
-        'scissors':'win'
-    },
-    'paper': {
-        'rock':'win',
-        'paper':'tie',
-        'scissors':'lose'
-    },
-
-    'scissors': {
-        'rock':'lose',
-        'paper':'win',
-        'scissors':'tie'
-    }
-}
-let score = localStorage.getItem('score') || { 'wins': 0, 'losses': 0, 'ties': 0 };
-
-updateGame();
-//you <img src="assets/paper.png" alt="" class="choice-icon"> <img src="assets/rock.png" alt="" class="choice-icon"> computer
+let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, ties: 0 };
+let autoPlaying = false;
+let intervalId;
 
 const resultElement = document.querySelector('.js-result');
 const choiceElement = document.querySelector('.js-choice');
@@ -29,24 +16,39 @@ const resetElementButton = document.querySelector('.js-reset-button');
 const autoElementButton = document.querySelector('.js-auto-play-button');
 
 
+document.querySelector('.js-rock-button').addEventListener('click', () => playGame('rock', resultElement, choiceElement));
+document.querySelector('.js-paper-button').addEventListener('click', () => playGame('paper', resultElement, choiceElement));
+document.querySelector('.js-scissors-button').addEventListener('click', () => playGame('scissors', resultElement, choiceElement));
 
-function updateGame() {
-    document.querySelector('.js-score').innerHTML = `Wins:${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+resetElementButton.addEventListener('click', function () {
+    score = { wins: 0, losses: 0, ties: 0 };
+    updateGame(scoreElement);
+});
+
+updateGame(scoreElement); // Initial game update
+
+// Game Logic Functions
+function updateGame(scoreElement) {
+    scoreElement.innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+    localStorage.setItem('score', JSON.stringify(score));
 }
 
-function playGame(playerChoice){
-    let choice = Math.floor(Math.random()*3);
-    let allChoices = ['rock','paper','scissors'];
-    let computerChoice = allChoices[choice];
+function computerRandomMove() {
+    const allChoices = ['rock', 'paper', 'scissors'];
+    return allChoices[Math.floor(Math.random() * 3)];
 
-    switch (outcomes[playerChoice][computerChoice]){
+}
+function playGame(playerChoice, resultElement, choiceElement) {
+
+    let computerChoice = computerRandomMove();
+    switch (outcomes[playerChoice][computerChoice]) {
         case 'win':
             score.wins += 1;
-            resultElement.innerHTML = 'You Won !';
+            resultElement.innerHTML = 'You Won!';
             break;
         case 'tie':
             score.ties += 1;
-            resultElement.innerHTML = 'It\'s a tie !';
+            resultElement.innerHTML = 'It\'s a tie!';
             break;
         case 'lose':
             score.losses += 1;
@@ -54,5 +56,18 @@ function playGame(playerChoice){
             break;
     }
 
-    choiceElement.innerHTML = `you <img src="assets/${playerChoice}.png" alt="" class="choice-icon"> <img src="assets/${computerChoice}.png" alt="" class="choice-icon"> computer`;
+    choiceElement.innerHTML = `You <img src="assets/${playerChoice}.png" alt="${playerChoice}" class="choice-icon"> vs. <img src="assets/${computerChoice}.png" alt="${computerChoice}" class="choice-icon"> Computer`;
+    updateGame(document.querySelector('.js-score'));
+}
+
+function autoPlay() {
+    if (!autoPlaying) {
+        intervalId = setInterval(() => {
+            playGame(computerRandomMove(), resultElement, choiceElement);
+        }, 1000);
+        autoPlaying = true;
+    } else {
+        clearInterval(intervalId);
+        autoPlaying = false;
+    }
 }

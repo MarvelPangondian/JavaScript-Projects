@@ -13,5 +13,7 @@
 - CSS
 
 ## Screenshots
+### Rock Paper Scissors game
 
-![Example screenshot](./img/screenshot.png)
+![initial state](./screenshots/rps1.png)
+![example](./screenshots/rps2.png)

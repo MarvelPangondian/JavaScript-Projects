@@ -23,8 +23,20 @@ button {
     padding: 1em ;
     margin: 0 1em;
     color: #FFE15D;     
+    cursor: pointer;
+    transition: 0.15s opacity;
 }
 
+button:hover {
+    opacity: 0.9;
+}
+button:active {
+    opacity: 0.7;
+}
+
+.result {
+  margin-top: 2em;
+}
 .score {
     margin: 2em 0;
 }
@@ -55,7 +67,6 @@ button {
 
 .move-button:hover {
   background-color: #f49d1a;
-
   transform: scale(1.3);
 }
 
