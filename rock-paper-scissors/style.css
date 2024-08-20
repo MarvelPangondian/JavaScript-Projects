@@ -1,0 +1,45 @@
+
+body {
+  margin: 0;
+  font-size: 1.125rem;
+  font-family: "Matemasie", sans-serif;
+  color: #f49d1a;
+  background-color: #ffe15d;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.choice-container {
+  display: flex;
+  justify-content: center;
+}
+
+.move-button {
+  border: 0.2em solid #f49d1a;
+  width: 32%;
+  max-width: 150px;
+  border-radius: 50%;
+  padding: 1em;
+  margin: 0 1em;
+  transition: 0.15s background-color, 0.15s transform;
+}
+
+.move-button:hover {
+  background-color: #f49d1a;
+
+  transform: scale(1.3);
+}
+
+.move-button:active {
+  background-color: transparent;
+}
+

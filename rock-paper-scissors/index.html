@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap"
+      rel="stylesheet"
+    />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="web-title">Rock Paper Scissors</h1>
+
+    <div class="choice-container">
+        <div class="move-button js-rock-button">
+            <img
+              src="assets/rock.png"
+              alt="rock image for rock paper scissors"
+              class="icon-img"
+            />
+        </div>
+          <div class="move-button js-paper-button">
+            <img src="assets/paper.png" alt="image of a paper" class="icon-img" />
+          </div>
+          <div class="move-button js-scissors-button">
+            <img
+              src="assets/scissors.png"
+              alt="image of a scissors"
+              class="icon-img"
+            />
+          </div>
+    </div>
+
+
+    <p class="js-result result">You Win!!</p>
+    <p class="js-choice">you .. .. computer</p>
+    <p class="js-score score">Wins: 1, Losses: 0, Ties: 0</p>
+    <button class="js-reset-button">Reset</button>
+    <button class="js-auto-play-button">Auto Play</button>
+
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
