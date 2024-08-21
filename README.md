@@ -20,3 +20,7 @@
 ### Calculator project
 ![initial state](./screenshots/calc1.png)</br></br>
 ![example](./screenshots/calc2.png)
+
+### Todo project
+![initial state](./screenshots/todo1.png)</br></br>
+![example](./screenshots/todo2.png)
