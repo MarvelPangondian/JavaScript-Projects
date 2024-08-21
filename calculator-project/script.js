@@ -1,52 +1,64 @@
-const calculationElement = document.querySelector('.calculation')
+const calculationElement = document.querySelector('.calculation');
 const historyElement = document.querySelector('.history');
 const buttonElement = document.querySelector('.buttons');
 let output = '';
 let outputDisplay = '';
-let nowOperator = false;
 
 buttonElement.addEventListener('click', (event) => {
     try {
         let value = event.target.dataset.value;
         if (event.target.tagName === "BUTTON") {
             if (value === '=' && output) {
-                historyElement.innerText = outputDisplay;
-                outputDisplay = +eval(output);
-                if (isNaN(outputDisplay)) {
-                    throw new Error('Unable to calculate input');
-                }
-                output = outputDisplay;
+                calculateResult();
 
             } else if (value === 'AC') {
-                historyElement.innerText = '';
-                outputDisplay = '';
-                output = '';
-
+                clearAll();
 
             } else if (value === 'DEL') {
-                outputDisplay.slice(0, -1);
-                output = outputDisplay;
+                deleteLastEntry();
 
             } else {
-                if (isNaN(value)) {
-                    // if it's an operator
-                    output += ' ' + value + ' ';
-                    outputDisplay += ' ' + event.target.innerText + ' ';
-
-                } else {
-                    output += value;
-                    outputDisplay += value;
-                }
+                appendValue(value, event.target.innerText);
             }
-            console.log(output);
         }
     } catch (e) {
         alert('Something went wrong');
-        outputDisplay = '';
-        output = '';
+        clearAll();
     }
     calculationElement.value = outputDisplay;
-
-
 });
+
+
+function clearAll() {
+    historyElement.innerText = '';
+    outputDisplay = '';
+    output = '';
+}
+
+function deleteLastEntry() {
+    outputDisplay = outputDisplay.slice(0, outputDisplay.length - 1);
+    output = output.slice(0,output.length - 1);
+}
+
+function appendValue(value, displayValue) {
+    if (isNaN(value)) { // Assuming 'value' is operator if not a number
+        output += `${value}`;
+        outputDisplay += `${displayValue}`;
+    } else {
+        output += value;
+        outputDisplay += value;
+    }
+}
+
+function calculateResult() {
+    if (!output) return;
+
+    const result = +eval(output);
+    if (isNaN(result)) throw new Error('Unable to calculate input');
+
+    historyElement.innerText = outputDisplay;
+    outputDisplay = result.toString();
+    output = outputDisplay;
+}
+
 

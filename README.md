@@ -14,6 +14,9 @@
 
 ## Screenshots
 ### Rock Paper Scissors game
-
-![initial state](./screenshots/rps1.png)
+![initial state](./screenshots/rps1.png)</br></br>
 ![example](./screenshots/rps2.png)
+
+### Calculator project
+![initial state](./screenshots/calc1.png)</br></br>
+![example](./screenshots/calc2.png)

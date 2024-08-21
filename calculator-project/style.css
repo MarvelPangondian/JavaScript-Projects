@@ -43,6 +43,7 @@ body {
     font-size: 3.2rem;
     font-weight: 100;
     color: white;
+    outline: none;
     pointer-events: none;
     background-color: transparent;
     border: none;
