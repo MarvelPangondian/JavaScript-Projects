@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-size: 1.125rem;
@@ -13,37 +12,43 @@ img {
 }
 
 h1 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
+  margin: 1.5em 0;
 }
+
 button {
-    font-family: 'Matemasie', sans-serif;
-    font-size: 1rem;
-    background-color: #F49D1A;
-    border: none;
-    padding: 1em ;
-    margin: 0 1em;
-    color: #FFE15D;     
-    cursor: pointer;
-    transition: 0.15s opacity;
+  font-family: "Matemasie", sans-serif;
+  font-size: 1rem;
+  background-color: #f49d1a;
+  border: none;
+  padding: 1em;
+  margin: 0 1em;
+  color: #ffe15d;
+  cursor: pointer;
+  transition: 0.15s opacity;
 }
 
 button:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
+
 button:active {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .result {
   margin-top: 2em;
 }
+
 .score {
-    margin: 2em 0;
+  margin: 2em 0;
 }
+
 .choice-icon {
-    width: 2em;
-    display: inline-block;
+  width: 2em;
+  display: inline-block;
 }
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -73,4 +78,3 @@ button:active {
 .move-button:active {
   background-color: transparent;
 }
-

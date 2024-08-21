@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(230, 230, 230, 0.926);
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: black;
+    padding: 1em;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.display-container {
+    display: flex;
+    flex-direction: column;
+    margin-block:  40px 30px;
+
+}
+
+.history {
+    font-family: 'Roboto', sans-serif;
+    font-size: .8rem;
+    font-weight: 300;
+    color: lightgray;
+    text-align: right;
+}
+
+.calculation {
+    font-family: 'Roboto',sans-serif;
+    font-size: 3.2rem;
+    font-weight: 100;
+    color: white;
+    pointer-events: none;
+    background-color: transparent;
+    border: none;
+    text-align: right;
+}
+
+.calculation::placeholder {
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+
+.buttons button {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    height: 75px;
+    width: 75px;
+    background-color:rgba(46,46,46,255);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition:  0.15s transform;
+}
+
+.buttons button:active {
+    transform: scale(0.9);
+}
+
+.buttons .operator {
+    background-color: orange;
+}
+
+.buttons .top-operator {
+    background-color: lightgray;
+    color: black;
+}
+
+button.value-zero {
+    width: calc(50% - 8px);
+    border-radius: 50px;
+}
+
+
