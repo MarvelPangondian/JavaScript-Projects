@@ -43,3 +43,11 @@ div input, div button {
 .delete-todo-button {
     background-color: darkred;
 }
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    opacity: 0.7;
+}
