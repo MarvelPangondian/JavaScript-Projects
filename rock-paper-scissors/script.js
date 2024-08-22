@@ -19,15 +19,29 @@ const autoElementButton = document.querySelector('.js-auto-play-button');
 document.querySelector('.js-rock-button').addEventListener('click', () => playGame('rock', resultElement, choiceElement));
 document.querySelector('.js-paper-button').addEventListener('click', () => playGame('paper', resultElement, choiceElement));
 document.querySelector('.js-scissors-button').addEventListener('click', () => playGame('scissors', resultElement, choiceElement));
-
-resetElementButton.addEventListener('click', function () {
-    score = { wins: 0, losses: 0, ties: 0 };
-    updateGame(scoreElement);
+document.body.addEventListener('keydown', (event) => {
+    console.log(event);
+    if (event.key === 'a') {
+        autoPlay();
+    } else if (event.key === 'Backspace') {
+        resetGame();
+    }
 });
 
+resetElementButton.addEventListener('click', function () {
+    resetGame();
+});
+autoElementButton.addEventListener('click', () => {
+    autoPlay();
+})
 updateGame(scoreElement); // Initial game update
 
 // Game Logic Functions
+
+function resetGame() {
+    score = { wins: 0, losses: 0, ties: 0 };
+    updateGame(scoreElement);
+}
 function updateGame(scoreElement) {
     scoreElement.innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
     localStorage.setItem('score', JSON.stringify(score));
@@ -62,11 +76,13 @@ function playGame(playerChoice, resultElement, choiceElement) {
 
 function autoPlay() {
     if (!autoPlaying) {
+        autoElementButton.innerText = 'Stop Autoplay';
         intervalId = setInterval(() => {
             playGame(computerRandomMove(), resultElement, choiceElement);
         }, 1000);
         autoPlaying = true;
     } else {
+        autoElementButton.innerText = 'Auto play';
         clearInterval(intervalId);
         autoPlaying = false;
     }
