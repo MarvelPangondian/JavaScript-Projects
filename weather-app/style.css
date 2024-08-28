@@ -108,3 +108,15 @@ body {
   border-radius: .5em;
   padding: 1.7em 2.5em; 
 }
+
+@media (max-width:480px){
+  .extra-details {
+    flex-direction: column;
+    row-gap: 1em;
+  }
+
+  .card {
+    max-width: 400px;
+    max-height: 900px;
+  }
+}
