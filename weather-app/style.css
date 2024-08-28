@@ -22,14 +22,17 @@ body {
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 90%;
   max-width: 468px;
   max-height: 784px;
   background: linear-gradient(135deg,#74BCCC,#D19357);
   border-radius: 20px;
   box-shadow: 10px 10px 4px rgba(0, 0, 0, .2);
+  padding-bottom: 2em;
 }
 
+.card-night {
+  background: linear-gradient(135deg,#241441,#313164);
+}
 .search{
   display: flex;
   justify-content: center;
@@ -52,6 +55,7 @@ body {
   opacity: .5;
 }
 .input-search:focus, .input-search:active {
+  color: black;
   border-width: 2px; 
   border-color: #007BFF; 
   background-color: #f0f8ff; 
@@ -117,6 +121,6 @@ body {
 
   .card {
     max-width: 400px;
-    max-height: 900px;
+    max-height: 100vh;
   }
 }
