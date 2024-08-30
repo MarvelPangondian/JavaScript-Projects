@@ -35,7 +35,8 @@ async function generateWeather(city){
     document.querySelector('.js-temperature').innerText = kelvinToCelcius(data.main.temp);
     document.querySelector('.js-weather').innerText = data.weather[0].main;
     let extraDetail = night ? '-night' : '';
-    document.querySelector('.js-weather-icon').src = `./assets/${data.weather[0].main.toLowerCase() + extraDetail}.png`;
+    let weather = data.weather[0].main.toLowerCase() === 'haze' ? 'mist' :data.weather[0].main.toLowerCase() ;
+    document.querySelector('.js-weather-icon').src = `./assets/${weather + extraDetail}.png`;
     document.querySelector('.js-city-name').innerText = data.name;
     document.querySelector('.js-humidity-quantity').innerText = data.main.humidity + "%";
     document.querySelector('.js-wind-quantity').innerText = data.wind.speed + "m/s";
